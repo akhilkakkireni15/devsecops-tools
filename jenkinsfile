@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'sha-ubuntu-node'
+        label 'akhil-security-agent'
     }
     triggers {
         pollSCM('H/3 * * * *') // checks every 3 mins, or
@@ -8,10 +8,10 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_USER = 'shacloudlab'
+        DOCKERHUB_USER = 'akhil'
         IMAGE_NAME = 'jenkins-docker-lab'
         SONARQUBE = 'SonarCloud'
-        SONAR_TOKEN = credentials('sha-sonar-token')
+        SONAR_TOKEN = credentials('akhil-sonar')
 
     }
    
@@ -87,8 +87,8 @@ pipeline {
 
                         echo "=== Running SonarQube Scanner ==="
                         sonar-scanner \
-                        -Dsonar.organization="shaputta" \
-                        -Dsonar.projectKey="shaputta_devsecops-project" \
+                        -Dsonar.organization="akhilkakkireni15" \
+                        -Dsonar.projectKey="akhilkakkireni15_devsecops-tools" \
                         -Dsonar.host.url=https://sonarcloud.io \
                         -Dsonar.sources=. \
                         -Dsonar.python.coverage.reportPaths=coverage.xml \
